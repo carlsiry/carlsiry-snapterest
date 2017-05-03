@@ -2,11 +2,11 @@
 
 ## https://apps.twitter.com
 - twitter account: Carlsiry
-- Consumer Key (API Key)  DzKL1gpNnfempwwdeJc01Ivg9
-- Consumer Secret (API Secret)  ojde8GTNvfCuM5rubLeScbOuM12R3b3VrQwKdXVYxfLk3Hem92
+- Consumer Key (API Key)
+- Consumer Secret (API Secret)
 
-- Access Token  859736618147631105-BjvYwSg4lPDxjbdzE5O4HHHX4LW70Wv
-- Access Token Secret XQgbJckgbQIYS9b18xAlqGapi1SlH6yGWL2iolf3mgJYm
+- Access Token
+- Access Token Secret
 
 
 ## Snapkite

@@ -2,13 +2,13 @@
 # Config
 ###############################
 
-config.json
+# config.json
 
 ###############################
 # Snapkite filters
 ###############################
 
-filters/snapkite-filter-*
+# filters/snapkite-filter-*
 
 ###############################
 # Node modules
