@@ -1,10 +1,28 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var listOfItems = <ul className="list-of-items">
-                    <li className="items-1"> item 1</li>
-                    <li className="items-2"> item 2</li>
-                    <li className="items-3"> item 3</li>
-                  </ul>;
+var Header = React.createClass({
+  getInitialState: function () {
+    return {
+      isHidden: false
+    }
+  },
+  handleClick: function () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
+  },
+  render: function () {
+    var title = 'Stateful React component';
+    var headerElement = React.createElement('h1', {className: 'header', key:'header'}, title);
+    var buttonElement = React.createElement('button',
+          {className: 'btn btn-default', onClick: this.handleClick, key:'button'},
+      'Toggle header');
+    if (this.state.isHidden) {
+      return React.createElement('div', null, [buttonElement]);
+    }
+    return React.createElement('div', null, [buttonElement, headerElement]);
+  }
+});
 
-ReactDOM.render(listOfItems, document.getElementById('react-application'));
+ReactDOM.render(<Header/>, document.getElementById('react-application'));

@@ -20502,26 +20502,30 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var listOfItems = React.createElement(
-                    'ul',
-                    { className: 'list-of-items' },
-                    React.createElement(
-                                        'li',
-                                        { className: 'items-1' },
-                                        ' item 1'
-                    ),
-                    React.createElement(
-                                        'li',
-                                        { className: 'items-2' },
-                                        ' item 2'
-                    ),
-                    React.createElement(
-                                        'li',
-                                        { className: 'items-3' },
-                                        ' item 3'
-                    )
-);
+var Header = React.createClass({
+  displayName: 'Header',
 
-ReactDOM.render(listOfItems, document.getElementById('react-application'));
+  getInitialState: function getInitialState() {
+    return {
+      isHidden: false
+    };
+  },
+  handleClick: function handleClick() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
+  },
+  render: function render() {
+    var title = 'Stateful React component';
+    var headerElement = React.createElement('h1', { className: 'header', key: 'header' }, title);
+    var buttonElement = React.createElement('button', { className: 'btn btn-default', onClick: this.handleClick, key: 'button' }, 'Toggle header');
+    if (this.state.isHidden) {
+      return React.createElement('div', null, [buttonElement]);
+    }
+    return React.createElement('div', null, [buttonElement, headerElement]);
+  }
+});
+
+ReactDOM.render(React.createElement(Header, null), document.getElementById('react-application'));
 
 },{"react":177,"react-dom":26}]},{},[178]);
