@@ -16,6 +16,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
   }
 }
