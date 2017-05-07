@@ -1,3 +1,15 @@
+
+function createHtmlMarkupStringOfTweetList(collectionTweets) {
+  var ReactDOMServer = require('react-dom/server');
+  var htmlString = ReactDOMServer.renderToStaticMarkup(
+      <TweetList tweet={collectionTweets} />
+  );
+  var htmlMarkup = {
+    html: htmlString
+  };
+  return JSON.stringify(htmlMarkup);
+}
+
 function getNumberOfTweetsInCollection(collection) {
   var TweetUtils = require('./TweetUtils');
   var listOfCollectionTweetIds = TweetUtils.getListOfTweetIds(collection);
@@ -10,5 +22,6 @@ function isEmptyCollection(collection) {
 
 module.exports = {
   getNumberOfTweetsInCollection: getNumberOfTweetsInCollection,
-  isEmptyCollection: isEmptyCollection
+  isEmptyCollection: isEmptyCollection,
+  createHtmlMarkupStringOfTweetList: createHtmlMarkupStringOfTweetList
 };

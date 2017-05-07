@@ -3,17 +3,20 @@ var Header = require('./Header');
 var Button = require('./Button');
 var CollectionRenameForm = require('./CollectionRenameForm');
 var CollectionExportForm = require('./CollectionExportForm');
+var CollectionActionCreators = require('../actions/CollectionActionCreators');
+var CollectionStore = require('../stores/CollectionStore');
+
 
 var CollectionControls = React.createClass({
   getInitialState: function () {
     return {
-      name: 'new',
       isEditingName: false
     };
   },
   getHeaderText: function () {
     var numberOfTweetsInCollection = this.props.numberOfTweetsInCollection;
     var text = numberOfTweetsInCollection;
+    var name = CollectionStore.getCollectionName();
 
     if (numberOfTweetsInCollection === 1) {
       text = text + ' tweet in your';
@@ -23,7 +26,7 @@ var CollectionControls = React.createClass({
 
     return (
       <span>
-        {text} <strong> {this.state.name} </strong> collection
+        {text} <strong> {name} </strong> collection
       </span>
     );
   },
@@ -31,6 +34,9 @@ var CollectionControls = React.createClass({
     this.setState({
       isEditingName: !this.state.isEditingName
     });
+  },
+  removeAllTweetFromCollection: function () {
+    CollectionActionCreators.removeAllTweetFromCollection();
   },
   setCollectionName: function (name) {
     this.setState({
@@ -42,9 +48,7 @@ var CollectionControls = React.createClass({
     if (this.state.isEditingName) {
       return (
         <CollectionRenameForm
-            name={this.state.name}
-            onChangeCollectionName={this.setCollectionName}
-            onCancelCollectionName={this.toggleEditCollectionName}
+            onCancelCollectionNameChange={this.toggleEditCollectionName}
         />
       );
     }
@@ -55,7 +59,7 @@ var CollectionControls = React.createClass({
             handleClick={this.toggleEditCollectionName}
         />
         <Button label="Empty collection"
-            handleClick={this.props.onRemoveAllTweetsFromCollection}
+            handleClick={this.removeAllTweetFromCollection}
         />
         <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
       </div>
