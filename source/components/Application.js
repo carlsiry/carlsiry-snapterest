@@ -1,6 +1,6 @@
 var React = require('react');
 var Stream = require('./Stream');
-// var Collection = require('./Collection');
+var Collection = require('./Collection');
 
 
 var Application = React.createClass({
@@ -36,7 +36,13 @@ var Application = React.createClass({
           <div className="col-md-4 text-center">
             <Stream onAddTweetToCollection={this.addTweetToCollection} />
           </div>
-
+          <div className="col-md-8">
+            <Collection
+                tweets={this.state.collectionTweets}
+                onRemoveTweetFromCollection={this.removeTweetFromCollection}
+                onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection}
+            />
+          </div>
         </div>
       </div>
     )
@@ -44,10 +50,3 @@ var Application = React.createClass({
 });
 
 module.exports = Application;
-          // <div className="col-md-8">
-          //   <Collection
-          //       tweets={this.state.collectionTweets}
-          //       onRemoveTweetFromCollection={this.removeTweetFromCollection}
-          //       onRemoveAllTweetsFromCollection={this.removeAllTweetsFromCollection}
-          //   />
-          // </div>

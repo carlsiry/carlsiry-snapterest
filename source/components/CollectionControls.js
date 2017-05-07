@@ -29,7 +29,7 @@ var CollectionControls = React.createClass({
   },
   toggleEditCollectionName: function () {
     this.setState({
-      isEditingName: !this.isEditingName
+      isEditingName: !this.state.isEditingName
     });
   },
   setCollectionName: function (name) {
@@ -51,15 +51,12 @@ var CollectionControls = React.createClass({
     return (
       <div>
         <Header text={this.getHeaderText()} />
-        // 重命名按钮
         <Button label="Rename collection"
             handleClick={this.toggleEditCollectionName}
         />
-        // 清空按钮
         <Button label="Empty collection"
             handleClick={this.props.onRemoveAllTweetsFromCollection}
         />
-        // 导出按钮
         <CollectionExportForm htmlMarkup={this.props.htmlMarkup} />
       </div>
     )

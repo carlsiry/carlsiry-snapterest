@@ -7,7 +7,7 @@ var Header = require('./Header');
 var Collection = React.createClass({
   createHtmlMarkupStringOfTweetList: function () {
     var htmlString = ReactDOMServer.renderToStaticMarkup(
-        <TwitterList tweet={this.props.tweets} />
+        <TweetList tweet={this.props.tweets} />
       );
     var htmlMarkup = {
       html: htmlString
@@ -29,20 +29,22 @@ var Collection = React.createClass({
       console.log(htmlMarkup);
       var removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
       var handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
+      return (
+        <div>
+          <CollectionControls
+              numberOfTweetsInCollection={numberOfTweetsInCollection}
+              htmlMarkup={htmlMarkup}
+              onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}
+          />
+          <TweetList
+              tweets={this.props.tweets}
+              onRemoveTweetFromCollection={handleRemoveTweetFromCollection}
+          />
+        </div>
+      );
     }
-    return (
-      <div>
-        <CollectionControls
-            numberOfTweetsInCollection={numberOfTweetsInCollection}
-            htmlMarkup={htmlMarkup}
-            onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}
-        />
-        <TweetList
-            tweets={tweets}
-            onRemoveTweetFromCollection={handleRemoveTweetFromCollection}
-        />
-      </div>
-    );
+
+    return <Header text="Your collection is empty" />;
   }
 });
 
